@@ -274,7 +274,8 @@ func (c *Unstructured) SetComposedResourceReferences(refs []reference.Composed) 
 	for _, ref := range refs {
 		// TODO(negz): Ask muvaf to explain what this is working around. :)
 		// TODO(muvaf): temporary workaround.
-		if ref.APIVersion == "" && ref.Kind == "" && ref.Name == "" && ref.Namespace == "" {
+		if ref.APIVersion == "" && ref.Kind == "" && ref.Name == "" && ref.Namespace == "" &&
+			ref.ResourceName == "" && len(ref.DependsOn) == 0 {
 			continue
 		}
 
